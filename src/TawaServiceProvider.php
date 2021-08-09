@@ -9,11 +9,13 @@
 namespace Tawa;
 
 use Illuminate\Support\ServiceProvider;
+use Tawa\Command\TawaInstallCommand;
 
 
 class TawaServiceProvider extends ServiceProvider
 {
     protected $commands = [
+        TawaInstallCommand::class,
     ];
 
     public function register(){
@@ -25,18 +27,24 @@ class TawaServiceProvider extends ServiceProvider
 //            return app()->make(InfobipService::class);
 //        });
 
+        $this->mergeConfigFrom(
+            __DIR__.'/config/tawa.php', 'tawa'
+        );
+        $this->mergeConfigFrom(
+            __DIR__.'/config/permission.php', 'permission'
+        );
+
+
         $this->registerAliases();
     }
 
     public function boot(){
-
+        dump('BBBBBBBBBBBBBB');
         if ($this->app->runningInConsole()) {
             $this->commands($this->commands);
         }
 
-        $this->mergeConfigFrom(
-            __DIR__.'/config/tawa.php', 'tawa'
-        );
+
 
         $this->loadTranslationsFrom(__DIR__ . '/lang', 'Tawa');
 
@@ -66,7 +74,7 @@ class TawaServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            TawaServiceProvider::class,
+            TawaServiceProvider::class
         ];
     }
 
