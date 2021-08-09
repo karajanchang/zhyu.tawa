@@ -6,7 +6,7 @@
  * Time: 05:36
  */
 
-namespace Adma;
+namespace Tawa;
 
 use Illuminate\Support\ServiceProvider;
 
@@ -29,19 +29,27 @@ class TawaServiceProvider extends ServiceProvider
     }
 
     public function boot(){
-        if ($this->isLumen()) {
-            require_once 'Lumen.php';
-        }
 
         if ($this->app->runningInConsole()) {
             $this->commands($this->commands);
         }
 
-        $this->loadTranslationsFrom(__DIR__ . '/lang', 'twdd');
+        $this->mergeConfigFrom(
+            __DIR__.'/config/tawa.php', 'tawa'
+        );
+
+        $this->loadTranslationsFrom(__DIR__ . '/lang', 'Tawa');
+
+        $this->loadViewsFrom(__DIR__.'/views', 'Tawa');
 
         $this->publishes([
-            __DIR__.'/resources/views' => resource_path('views'),
+            __DIR__ . '/resources/views' => resource_path('views'),
         ]);
+
+
+        $this->loadMigrationsFrom(__DIR__.'/database/migrations');
+
+        $this->loadRoutesFrom(__DIR__.'/routes/web.php');
     }
 
     protected function loadFunctions(){
@@ -58,7 +66,7 @@ class TawaServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            AdmaServiceProvider::class,
+            TawaServiceProvider::class,
         ];
     }
 

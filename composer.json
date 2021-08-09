@@ -1,9 +1,9 @@
 {
-    "name": "zhyu/admin",
-    "description": "admin",
+    "name": "zhyu/tawa",
+    "description": "admin with laravel, alpineJs and livewire",
     "license": "MIT",
     "keywords": [
-
+        "laravel", "AlpineJs", "Livewire"
     ],
     "authors": [
         {
@@ -18,7 +18,7 @@
     },
     "autoload": {
         "psr-4": {
-            "Adma\\": "src/"
+            "Tawa\\": "src/"
         }
     },
     "autoload-dev": {
@@ -32,7 +32,7 @@
         },
         "laravel": {
             "providers": [
-                "Tawa\\AdmaServiceProvider"
+                "Tawa\\TawaServiceProvider"
             ],
             "aliases": {
 
