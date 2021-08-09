@@ -1,0 +1,44 @@
+{
+    "name": "zhyu/admin",
+    "description": "admin",
+    "license": "MIT",
+    "keywords": [
+
+    ],
+    "authors": [
+        {
+            "name": "karajanchang",
+            "email": "karajanchang@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^7.2|^7.3|^7.4",
+        "illuminate/support": "^8.53",
+        "livewire/livewire": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Adma\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Tawa\\Tests\\Packages\\": "tests/"
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "1.0.0-dev"
+        },
+        "laravel": {
+            "providers": [
+                "Tawa\\AdmaServiceProvider"
+            ],
+            "aliases": {
+
+            }
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
