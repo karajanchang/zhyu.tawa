@@ -39,7 +39,6 @@ class TawaServiceProvider extends ServiceProvider
     }
 
     public function boot(){
-        dump('BBBBBBBBBBBBBB');
         if ($this->app->runningInConsole()) {
             $this->commands($this->commands);
 

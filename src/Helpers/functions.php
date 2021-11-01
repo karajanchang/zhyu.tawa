@@ -4,11 +4,14 @@
  * @param $args
  * @return bool
  */
-function args_get_parse($args){
-    if(isset($args[0]) && is_array($args[0]) && count($args)==1){
+if(function_exists('args_get_parse')) {
+    function args_get_parse($args)
+    {
+        if (isset($args[0]) && is_array($args[0]) && count($args) == 1) {
 
-        return $args[0];
+            return $args[0];
+        }
+
+        return $args;
     }
-
-    return $args;
 }
