@@ -38,8 +38,7 @@
         },
         "laravel": {
             "providers": [
-                "Tawa\\TawaServiceProvider",
-                "App\\Providers\\TawaServiceProvider"
+                "Tawa\\TawaServiceProvider"
             ],
             "aliases": {
 
