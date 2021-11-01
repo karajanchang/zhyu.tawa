@@ -42,17 +42,15 @@ class TawaServiceProvider extends ServiceProvider
         dump('BBBBBBBBBBBBBB');
         if ($this->app->runningInConsole()) {
             $this->commands($this->commands);
-        }
 
+            $this->publish();
+        }
 
 
         $this->loadTranslationsFrom(__DIR__ . '/lang', 'Tawa');
 
         $this->loadViewsFrom(__DIR__.'/views', 'Tawa');
 
-        $this->publishes([
-            __DIR__ . '/resources/views' => resource_path('views'),
-        ]);
 
 
         $this->loadMigrationsFrom(__DIR__.'/database/migrations');
@@ -66,6 +64,17 @@ class TawaServiceProvider extends ServiceProvider
         }
     }
 
+    protected function publish(){
+        $this->publishes([
+            __DIR__ . '/resources/views' => resource_path('views'),
+        ]);
+
+        $this->publishes([
+            __DIR__.'/stubs/TawaServiceProvider.stub' => app_path('Providers/TawaServiceProvider.php'),
+        ], 'tawa-provider');
+
+    }
+
     /**
      * Get the services provided by the provider.
      *
@@ -74,7 +83,7 @@ class TawaServiceProvider extends ServiceProvider
     public function provides()
     {
         return [
-            TawaServiceProvider::class
+            TawaServiceProvider::class,
         ];
     }
 
